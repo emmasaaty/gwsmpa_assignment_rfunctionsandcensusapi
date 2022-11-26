@@ -186,12 +186,10 @@ First, filter your data to remove Alaska, Hawaii and Puerto Rico.
 
 ```{r}
 
-state_geo_new <- state_geo %>%
+state_geo_filtered <- state_geo %>%
   filter(NAME != "Hawaii")%>%
   filter(NAME != "Alaska")%>%
   filter(NAME != "Puerto Rico")
-  
-  
   
 
 
@@ -201,10 +199,8 @@ Now, using the tmap() package, create a shaded map for the continental U.S. that
 
 ```{r}
 
-
-
-
-
+tm_shape(state_geo_filtered) +
+  tm_polygons("percent_bach_or_higher", id = "GEOID")
 
 
 ```
