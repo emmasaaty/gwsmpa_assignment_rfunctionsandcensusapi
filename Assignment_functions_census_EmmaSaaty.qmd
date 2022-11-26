@@ -20,6 +20,7 @@ library(tmaptools)
 library(janitor)
 library(writexl)
 library(here)
+library(dplyr)
 options(tigris_class = "sf")
 
 ```
@@ -185,8 +186,13 @@ First, filter your data to remove Alaska, Hawaii and Puerto Rico.
 
 ```{r}
 
-
-
+state_geo_new <- state_geo %>%
+  filter(NAME != "Hawaii")%>%
+  filter(NAME != "Alaska")%>%
+  filter(NAME != "Puerto Rico")
+  
+  
+  
 
 
 ```
